@@ -1,5 +1,5 @@
 module Spree
-  AppConfiguration.class_eval do
+  module AppConfigurationDecorator
     # Default mail headers settings
     preference :mails_from, :string, default: 'spree@example.com'
     preference :enable_mail_delivery, :boolean, default: false
@@ -22,3 +22,4 @@ module Spree
     alias_method :override_actionmailer_config=, :override_actionmailer_config
   end
 end
+Spree::AppConfiguration.prepend Spree::AppConfigurationDecorator
